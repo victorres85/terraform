@@ -92,7 +92,7 @@ All alarms are tagged with the client name "client_name" and the project name "q
 # AWS SNS Topics and Subscriptions Configuration Summary
 The Terraform configuration creates two AWS Simple Notification Service (SNS) topics and their corresponding subscriptions:
 
-- **Alarm Topic:** An SNS topic named "alarm-topic" is created. A subscription is also created for this topic with the protocol set to "email" and the endpoint set to "victor.almeida@1000heads.com". This means that when a message is published to this topic, an email will be sent to the specified email address.
+- **Alarm Topic:** An SNS topic named "alarm-topic" is created. A subscription is also created for this topic with the protocol set to "email" and the endpoint set to "victor.almeida@company.com". This means that when a message is published to this topic, an email will be sent to the specified email address.
 
 - **Lambda Update Instance Topic:** Another SNS topic named "alarm-update-instance" is created. A subscription is also created for this topic with the protocol set to "lambda" and the endpoint set to the ARN of a specific AWS Lambda function. This means that when a message is published to this topic, the specified Lambda function will be triggered.
 
@@ -264,7 +264,7 @@ The AWS Identity and Access Management (IAM) configuration in the project_name p
 The IAM configuration in the project_name project plays a pivotal role in managing access and permissions across various AWS services. By creating specific roles and policies, and associating them with relevant AWS resources, the project ensures a secure and controlled environment. This approach not only enhances security by following the principle of least privilege but also streamlines the interaction between different AWS services, contributing to the overall efficiency and reliability of the application infrastructure.
 
 ## S3 Bucket Configuration
-In the project_name project, the AWS S3 bucket plays a critical role in storing and managing media and static files for the quiz application, as well as holding the keys used for setting up both the main and background removal applications. The configuration of this S3 bucket, `project_name-quiz-1000heads`, is established through Terraform scripts to ensure secure, efficient, and organized access to these resources.
+In the project_name project, the AWS S3 bucket plays a critical role in storing and managing media and static files for the quiz application, as well as holding the keys used for setting up both the main and background removal applications. The configuration of this S3 bucket, `project_name-quiz-company`, is established through Terraform scripts to ensure secure, efficient, and organized access to these resources.
 
 #### S3 Bucket Usage
 - **Media and Static Files Storage:** The bucket stores media files (like images and videos) and static files (like CSS, JavaScript, and HTML files) required for the quiz application. These files are crucial for the application's user interface and overall user experience.
@@ -277,7 +277,7 @@ In the project_name project, the AWS S3 bucket plays a critical role in storing 
   - **EC2 Instance Access (Sid: AllowAccessFromEC2Instance):** Provides broader permissions for the `s3_access_role` associated with EC2 instances, enabling them to access and manipulate objects in the `static/`, `project_name-quiz.js`, and `keys/` directories.
 
 #### Conclusion
-The configuration of the AWS S3 bucket `project_name-quiz-1000heads` is a vital component of the project_name project's AWS architecture. By utilizing Terraform for infrastructure as code, we have established a secure, efficient, and highly functional storage solution. This setup not only supports the operational needs of the quiz application but also adheres to best practices for AWS resource management and security. The defined bucket policy ensures that the application has the necessary access to its static and media content, while also maintaining the confidentiality and integrity of key configuration files. 
+The configuration of the AWS S3 bucket `project_name-quiz-company` is a vital component of the project_name project's AWS architecture. By utilizing Terraform for infrastructure as code, we have established a secure, efficient, and highly functional storage solution. This setup not only supports the operational needs of the quiz application but also adheres to best practices for AWS resource management and security. The defined bucket policy ensures that the application has the necessary access to its static and media content, while also maintaining the confidentiality and integrity of key configuration files. 
 
 ## Main Application Setup
 ### AWS EC2 Instance Configuration (Terraform and Ansible)
@@ -322,7 +322,7 @@ In the project_name project, AWS CloudFront plays a significant role in deliveri
 - Price Class: Set to PriceClass_100, which is the most cost-effective option. It uses a limited set of AWS edge locations, focusing mainly on North America and Europe.
 
 2. **Origins Configuration:**
-- S3 Origin: Configured to use the S3 bucket project_name-quiz-1000heads.s3.eu-west-2.amazonaws.com as one of its origins, with an Origin Access Identity (OAI) for secure access.
+- S3 Origin: Configured to use the S3 bucket project_name-quiz-company.s3.eu-west-2.amazonaws.com as one of its origins, with an Origin Access Identity (OAI) for secure access.
 - EC2 Origin: Another origin points to an EC2 instance, with custom settings for HTTP and HTTPS ports and protocols, ensuring that the content is served securely using https-only policy.
 
 3. **Cache Behaviors:**
@@ -407,7 +407,7 @@ The project_name project incorporates AWS CloudWatch and Simple Notification Ser
 ### AWS Simple Notification Service (SNS) Configuration
 1. **Alarm Topic (alarm-topic):**
 - **Purpose:** Serves as a notification channel for various CloudWatch alarms.
-- **Subscription (email_subscription):** Configured to send email notifications to victor.almeida@1000heads.com.
+- **Subscription (email_subscription):** Configured to send email notifications to victor.almeida@company.com.
 
 2. **Lambda Update Instance Topic (alarm-update-instance):**
 - **Purpose:** Used to trigger a specific AWS Lambda function based on certain alarms.
