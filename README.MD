@@ -1,29 +1,3 @@
-
-## Copy file to bastion host
-scp -i "XXXXX.pem" "XXXXX.pem"  ubuntu@ec2-xx-xxx-xxx-xxx.eu-west-2.compute.amazonaws.com:/home/ubuntu/
-ssh -i "XXXXX.pem" ubuntu@ec2-xx-xxx-xxx-xxx.eu-west-2.compute.amazonaws.com
-
-
-chmod 400 XXXXX.pem    
-
-
-ps -ef | grep amazon-cloudwatch-agent
-
-
-python manage.py collectstatic
-aws cloudfront list-distributions
-aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths /path/to/file
-
-'''
-Add correct host key in /Users/victoralmeida/.ssh/known_hosts to get rid of this message.
-Offending RSA key in /Users/victoralmeida/.ssh/known_hosts:182
-Host key for ec2-18-135-57-147.eu-west-2.compute.amazonaws.com has changed and you have requested strict checking.
-Host key verification failed.
-'''
-sed -i "" '182d' ~/.ssh/known_hosts
-sed -i "" '182d;181d;180d' ~/.ssh/known_hosts
-
-
 # AWS VPC Configuration Summary
 The Terraform configuration creates an AWS VPC with related resources:
 
